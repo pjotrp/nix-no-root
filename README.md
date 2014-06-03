@@ -1,9 +1,28 @@
 nix-no-root
 ===========
 
-Empowered Nix/Guix without root access.
+Empowered Nix/Guix without root access. The Nix and Guix package
+managers are incredible useful for software deployment, also on
+systems where you have no root access. 
 
-So far I have managed to install Nix with these scripts on 
+If the system has gcc, Perl and a few other build tools it may be
+possible to bootstrap  on the target system using
+./scripts/nix-bootstrap-home.sh.  Alternatively, provided the $HOME
+path is the same, you can actually build on any host with a similar
+architecture and running kernel and move the binaries across. Nix is
+self-contained and depends on very little. That is important to know!
+
+The basic information came from the [Nix
+wiki](https://nixos.org/wiki/How_to_install_nix_in_home_%28on_another_distribution%29).
+
+So far, this is the most successful bootstrap route I tried for Nix,
+and I have tried quite a few ways over time. For Guix the upside is
+that if Nix works you can simply install Guix from a Nix package.
+Very easy. 
+
+So far, I have managed to install Nix with these scripts on a large
+CentOS6 compute cluster.  When more people have success stories,
+please add that information here.
 
 ## CentOS6
 
