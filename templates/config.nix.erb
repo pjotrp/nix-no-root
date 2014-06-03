@@ -1,0 +1,12 @@
+# mkdir $HOME/.nixpkgs
+# erb config.nix.erb > $HOME/.nixpkgs/config.nix
+#
+pkgs:
+ {
+   packageOverrides = self: {
+     nix = self.nix.override {
+       storeDir = "<%= ENV['HOME'] %>/nix/store";
+       stateDir = "<%= ENV['HOME'] %>/nix/var";
+     };
+   };
+ }
