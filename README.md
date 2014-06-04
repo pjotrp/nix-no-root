@@ -1,6 +1,19 @@
 nix-no-root
 ===========
 
+The Nix1.7 branch is not working. It bails out with link errors for
+libbz2 and 
+
+```
+  LD     src/nix-hash/nix-hash
+/usr/bin/ld: warning: libbz2.so.1.0, needed by src/libstore/libnixstore.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: src/nix-hash/nix-hash: undefined reference to symbol 'pthread_cancel@@GLIBC_2.2.5'
+/usr/bin/ld: note: 'pthread_cancel@@GLIBC_2.2.5' is defined in DSO /lib64/libpthread.so.0 so try adding it to the linker command line
+/lib64/libpthread.so.0: could not read symbols: Invalid operation
+collect2: ld returned 1 exit status
+make: *** [src/nix-hash/nix-hash] Error 1
+```
+
 Empowered Nix/Guix without root access. The Nix and Guix package
 managers are incredible useful for software deployment, also on
 systems where you have no root access. 
