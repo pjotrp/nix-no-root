@@ -30,5 +30,33 @@ please add that information here.
 
 # NixPkgs
 
-On some systems Perl will fail because of the ping tests. Use the
-patch in patches/nixpkgs/perl_ping_test.patch 
+The easiest way to handle nixpkgs is to checkout a git repository and
+pass it in to nix-env. Because nix builds dependencies on the full
+paths it is not possible to use the pre-built binaries anyway.
+
+    ~/nix-boot/bin/nix-env -f nixpkgs/ -i guix
+
+Another advantage of using a git repository is that you can easily
+stabilize on the build set you want to deploy (elsewhere). At the
+moment we use a branch for our lab and a branch for (cloud)biolinux.
+
+# Guix
+
+GNU Guix is a Nix package which can be installed with
+
+    env TMPDIR=/var/tmp/pprins/ ~/nix-boot/bin/nix-env -f nixpkgs/ -i guix 
+
+in my opinion this is the easiest way to bootstrap Guix on an existing
+Linux system without root. Currently I can do
+
+   ~/nix/store/1qjma0ik7y2lcsgdni9y0hjk435jhhf9-guix-0.3/bin/guix-daemon --listen=$HOME/tmp/guix
+   env GUIX_DAEMON_SOCKET=$HOME/tmp/guix nix/store/1qjma0ik7y2lcsgdni9y0hjk435jhhf9-guix-0.3/bin/guix package -i vim
+   guix package: error: build failed: creating directory `/nix': Permission denied
+ 
+
+The following TODOs are relevant
+
+1. Update Guix to recent stable (currently 0.3 in NixPkgs)
+2. Have Guix use $HOME/nix/store or similar ($localstatedir configure)
+
+
