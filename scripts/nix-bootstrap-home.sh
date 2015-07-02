@@ -33,7 +33,7 @@ export PATH=$HOME/nix-boot/bin:$PATH
 export PKG_CONFIG_PATH=$HOME/nix-boot/lib/pkgconfig:$PKG_CONFIG_PATH
 export LDFLAGS="-L$HOME/nix-boot/lib $LDFLAGS"
 export CPPFLAGS="-I$HOME/nix-boot/include $CPPFLAGS"
-export PERL5OPT="-I$HOME/nix-boot/lib/perl -I$HOME/nix-boot/lib64/perl5"
+export PERL5OPT="-I$HOME/nix-boot/lib/perl -I$HOME/nix-boot/lib64/perl5 -I$HOME/nix-boot/lib/perl5"
 export nix=$HOME/nix-boot
 
 if [ ! -e $nix/lib/libbz2.so.1.0.6 ]; then
